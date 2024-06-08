@@ -1,0 +1,12 @@
+﻿@{
+	ViewData["Title"] = "Profile";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script>
+<script src="../../../js/components_modals.js"></script>
+<body ng-app="myApp">
+	<!-- Sử dụng directive stcModal với các thuộc tính title, content và mycontent -->
+	<stc-modal title="Thông tin cá nhân" content="modalContent" mycontent=""></stc-modal>
+	<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#modal_default'>Hiện thông tin <i class='ph-play-circle ms-2'></i></button>;
+
+</body>

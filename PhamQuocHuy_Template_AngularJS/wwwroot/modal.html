@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body ng-app="myApp">
+    <div class="row" ng-controller="myCtrl">
+
+        <!-- directive: my-comment -->
+        <div id="modal_default" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Cập nhật thông tin</h6>
+                        </div>
+                        <div class="card-body">
+                            <form name="profileForm" novalidate ng-submit="updateProfile()">
+                                <div class="row mb-3">
+                                    <div class="col-lg-10">
+                                        <div class="form-floating">
+                                            <input type="text" name="fullName" ng-model="fullName" class="form-control" required>
+                                            <label>Họ và tên</label>
+                                            <div class="text-danger" ng-show="profileForm.fullName.$error.required && profileForm.fullName.$touched">
+                                                Họ và tên là bắt buộc.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-10">
+                                        <div class="form-floating">
+                                            <select class="form-select">
+                                                <option value="1">Việt Nam</option>
+                                                <option value="2">Anh</option>
+                                                <option value="3">Hàn</option>
+                                            </select>
+                                            <label>Quốc tịch</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-10">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="date" name="birthdate" ng-model="birthdate" required>
+                                            <label>Năm sinh</label>
+                                            <div class="text-danger" ng-show="profileForm.birthdate.$error.required && profileForm.birthdate.$touched">
+                                                Năm sinh là bắt buộc.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-10">
+                                        <div class="form-floating">
+                                            <input type="text" name="phoneNumber" ng-model="phoneNumber" phone-number class="form-control" required>
+                                            <label>Số điện thoại</label>
+                                            <div ng-show="profileForm.phoneNumber.$error.required && profileForm.phoneNumber.$touched">
+                                                <div class="text-danger">Số điện thoại là bắt buộc.</div>
+                                            </div>
+                                            <div ng-show="phoneNumber && !(phoneNumber | phoneNumberValidator)">
+                                                <small class="text-danger">Số điện thoại không hợp lệ. Vui lòng nhập đúng 10 chữ số.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-10">
+                                        <div class="form-floating">
+                                            <input type="email" name="email" ng-model="email" class="form-control" id="email" required>
+                                            <label>Email</label>
+                                        </div>
+                                        <div ng-show="profileForm.email.$error.email" class="text-danger">Email không hợp lệ</div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" data-bs-toggle='modal' data-bs-target='#modal_default2' ng-disabled="profileForm.$invalid ||  !(phoneNumber | phoneNumberValidator)">
+                                    <i class="ph-check-square-offset me-2"></i>
+                                    Cập nhật
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="modal_default2" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ title }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Họ và tên:</strong> {{ mycontent.fullName }}</p>
+                        <p><strong>Số điện thoại:</strong> {{ mycontent.phoneNumber | phoneNumberValidator }}</p>
+
+                        <p><strong>Email:</strong> {{ mycontent.email }}</p>
+                        <p><strong>Năm sinh:</strong> {{ mycontent.birthdate }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>

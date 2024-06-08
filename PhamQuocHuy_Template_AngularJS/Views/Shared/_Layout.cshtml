@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+	<!-- Global stylesheets -->
+	
+	<link href="../../css/assets/inter.css" rel="stylesheet" type="text/css">
+	<link href="~/css/assets/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/assets/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	<!-- Core JS files -->
+	<script src="../../../js/demo_configurator.js"></script>
+	<script src="../../../js/bootstrap.bundle.min.js"></script>
+
+	<!-- Theme JS files -->
+	<script src="../../../js/theme/d3.min.js"></script>
+	<script src="../../../js/theme/d3_tooltip.js"></script>
+
+	<script src="../js/app.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/phosphor-icons@1.4.2/src/index.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/phosphor-icons@1.4.2/src/css/icons.min.css">
+
+
+</head>
+<body>
+		@Html.Partial("_Header");
+        <main role="main">
+            @RenderBody()
+        </main>
+		@Html.Partial("_Footer");
+		@Html.Partial("_Notification");
+		@Html.Partial("_Demo");
+		
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
